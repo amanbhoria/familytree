@@ -13,15 +13,15 @@ import FolderIcon from "@mui/icons-material/Folder";
 
 const Tree = () => {
   const [open, setOpen] = useState(true);
-  const [property, setProperty] = useState(false);
+  // const [property, setProperty] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
-  const changeState = () => {
-    setProperty(true);
-  };
+  // const changeState = () => {
+  //   setProperty(true);
+  // };
 
   return (
     <div className="row">
@@ -52,7 +52,7 @@ const Tree = () => {
               component="nav"
               aria-labelledby="nested-list-subheader"
             >
-              <ListItemButton onClick={changeState}>
+              <ListItemButton>
                 <ListItemIcon>
                   <FolderIcon />
                 </ListItemIcon>

@@ -57,7 +57,7 @@ const Tree = () => {
                   <FolderIcon />
                 </ListItemIcon>
                 <ListItemText primary="Grand Father" />
-                <FamilyDetails isVisible={property}></FamilyDetails>
+                {/* <FamilyDetails isVisible={property}></FamilyDetails> */}
               </ListItemButton>
               <ListItemButton>
                 <ListItemIcon>

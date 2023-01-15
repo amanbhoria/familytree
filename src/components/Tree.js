@@ -167,19 +167,8 @@ const Tree = () => {
                         <FolderIcon />
                       </ListItemIcon>
                       <ListItemText>{role}</ListItemText>
-                      {open ? <ExpandLess /> : <ExpandMore />}
+                      {/* {open ? <ExpandLess /> : <ExpandMore />} */}
                     </ListItemButton>
-
-                    {/* <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                      <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemIcon>
-                          <FolderIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Me" />
-                      </ListItemButton>
-                    </List>
-                  </Collapse> */}
                   </List>
                 );
               })}

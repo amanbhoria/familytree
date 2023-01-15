@@ -18,7 +18,7 @@ const FamilyDetails = (props) => {
           <div className="card-body" data-v-ce9038c6="">
             <div className="card-body">
               <div className="info">
-                <div className="m-b-5" htmlFor="">
+                <div className="small-text" htmlFor="">
                   <p>Name: {props.obj.name}</p>
                 </div>
                 <div className="small-text" htmlFor="">

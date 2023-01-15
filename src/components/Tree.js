@@ -27,6 +27,7 @@ const Tree = () => {
     console.log(getName);
     setProperty(!property);
     setName(getName);
+    setSpouse("Wife");
   };
 
   return (

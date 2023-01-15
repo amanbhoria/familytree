@@ -52,36 +52,13 @@ const Tree = () => {
 
   const handleSearchClick = () => {
     if (searchValue.length === 0) {
-      console.log(`Search Value if length is 0 ${searchValue}`);
-      setFamilyArr(
-        {
-          role: "Grand Father",
-          name: "Ganga Bishan",
-          spouse: "Roshni",
-          location: "HR",
-          birthYear: "1950",
-        },
-        {
-          role: "Father",
-          name: "Ravinder",
-          spouse: "Savita",
-          location: "Delhi",
-          birthYear: "1950",
-        },
-        {
-          role: "Me",
-          name: "Aman",
-          spouse: "Ishika",
-          location: "Delhi",
-          birthYear: "1998",
-        }
-      );
+      alert("Please add some value");
     } else {
       console.log(searchValue);
       const element = familyArr.filter((x) => x.name === searchValue);
       if (element && searchValue.length > 0) {
         console.log(element);
-        setFamilyArr(element);
+        setFamilyArr(familyArr.filter((x) => x.name === searchValue));
       }
     }
   };
@@ -122,34 +99,46 @@ const Tree = () => {
                 <i class="fa-solid fa-magnifying-glass"></i>
               </Button>
             </div>
-            {familyArr.map((obj, index) => {
-              const role = obj.role;
-              return (
-                <List
-                  sx={{
-                    width: "100%",
-                    maxWidth: 360,
-                    bgcolor: "background.paper",
-                  }}
-                  component="nav"
-                  aria-labelledby="nested-list-subheader"
-                  id="list"
-                >
-                  <ListItemButton
-                    key={index}
-                    onClick={(e) => {
-                      handleClick(obj);
-                      changeState(e);
-                    }}
-                  >
-                    <ListItemIcon>
-                      <FolderIcon />
-                    </ListItemIcon>
-                    <ListItemText>{role}</ListItemText>
-                    {open ? <ExpandLess /> : <ExpandMore />}
-                  </ListItemButton>
+            {familyArr
+              .filter((item) => {
+                if (
+                  item.name
+                    .toLocaleLowerCase()
+                    .includes(searchValue.toLocaleLowerCase())
+                ) {
+                  return true;
+                }
 
-                  {/* <Collapse in={open} timeout="auto" unmountOnExit>
+                return false;
+              })
+              .map((obj, index) => {
+                const role = obj.role;
+                return (
+                  <List
+                    sx={{
+                      width: "100%",
+                      maxWidth: 360,
+                      bgcolor: "background.paper",
+                    }}
+                    component="nav"
+                    aria-labelledby="nested-list-subheader"
+                    id="list"
+                  >
+                    <ListItemButton
+                      key={index}
+                      onClick={(e) => {
+                        handleClick(obj);
+                        changeState(e);
+                      }}
+                    >
+                      <ListItemIcon>
+                        <FolderIcon />
+                      </ListItemIcon>
+                      <ListItemText>{role}</ListItemText>
+                      {open ? <ExpandLess /> : <ExpandMore />}
+                    </ListItemButton>
+
+                    {/* <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                       <ListItemButton sx={{ pl: 4 }}>
                         <ListItemIcon>
@@ -159,9 +148,9 @@ const Tree = () => {
                       </ListItemButton>
                     </List>
                   </Collapse> */}
-                </List>
-              );
-            })}
+                  </List>
+                );
+              })}
           </div>
         </div>
         <div className="functionalButton">

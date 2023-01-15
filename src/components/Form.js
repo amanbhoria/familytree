@@ -3,12 +3,12 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 
 const Form = (props) => {
-  const handleClick = (e) => {
+  const handleFormClick = (e) => {
     props.obj.push(e.target.value);
     console.log(props.obj);
   };
 
-  const handleSearch = (e) => {
+  const handleFormSearch = (e) => {
     console.log(e.target.value);
   };
   return (
@@ -26,7 +26,7 @@ const Form = (props) => {
                 <TextField
                   id="form-element"
                   label="Name"
-                  onChange={(e) => handleSearch(e)}
+                  onChange={(e) => handleFormSearch(e)}
                   variant="outlined"
                   size="small"
                 />
@@ -34,7 +34,7 @@ const Form = (props) => {
               <div className="form-element">
                 <TextField
                   id="form-element"
-                  onChange={(e) => handleSearch(e)}
+                  onChange={(e) => handleFormSearch(e)}
                   label="Spouse"
                   variant="outlined"
                   size="small"
@@ -44,7 +44,7 @@ const Form = (props) => {
                 <TextField
                   id="form-element"
                   label="Birth"
-                  onChange={(e) => handleSearch(e)}
+                  onChange={(e) => handleFormSearch(e)}
                   variant="outlined"
                   size="small"
                 />
@@ -53,13 +53,13 @@ const Form = (props) => {
                 <TextField
                   id="form-element"
                   label="Location"
-                  onChange={(e) => handleSearch(e)}
+                  onChange={(e) => handleFormSearch(e)}
                   variant="outlined"
                   size="small"
                 />
               </div>
               <Button
-                onClick={(e) => handleClick(e)}
+                onClick={(e) => handleFormSearch(e)}
                 type="submit"
                 size="large"
                 className="input-group-text"

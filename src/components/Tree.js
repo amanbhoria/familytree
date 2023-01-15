@@ -10,14 +10,24 @@ import ListItemText from "@mui/material/ListItemText";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import FolderIcon from "@mui/icons-material/Folder";
+// eslint-disable-next-line
 import Form from "./Form";
 
 const Tree = () => {
   const [open, setOpen] = useState(true);
   const [property, setProperty] = useState(false);
-
   const [searchValue, setSearchValue] = useState("");
   const [familyObj, setFamilyObj] = useState([]);
+
+  // eslint-disable-next-line
+  const [values, setValues] = useState([]);
+
+  const [name, setName] = useState("");
+  const [spouse, setSpouse] = useState("");
+  const [location, setLocation] = useState("");
+  const [role, setRole] = useState("");
+  const [birthYear, setBirthYear] = useState("");
+
   const [familyArr, setFamilyArr] = useState([
     {
       role: "Grand Father",
@@ -67,16 +77,28 @@ const Tree = () => {
       console.log(searchValue);
       const element = familyArr.filter((x) => x.name === searchValue);
       if (element && searchValue.length > 0) {
-        console.log(element);
         setFamilyArr(familyArr.filter((x) => x.name === searchValue));
       }
     }
   };
 
+  const handleFormSearch = (e) => {
+    e.preventDefault();
+    const newElement = {
+      role: role,
+      name: name,
+      spouse: spouse,
+      location: location,
+      birthYear: birthYear,
+    };
+
+    let newState = [...familyArr, newElement];
+
+    setFamilyArr(newState);
+  };
+
   const changeState = (e) => {
     e.preventDefault();
-    const getName = e.target.innerText;
-    console.log(getName);
     setProperty(!property);
   };
 
@@ -194,7 +216,80 @@ const Tree = () => {
         </div>
       </div>
       <FamilyDetails isVisible={property} obj={familyObj}></FamilyDetails>
-      <Form isVisible={property} obj={familyObj} className="pull-right"></Form>
+      {/* <Form isVisible={property} obj={familyObj} className="pull-right"></Form> */}
+      <div className="col-4">
+        <div className="card card-default" data-v-ce9038c6="">
+          <div className="card-header" data-v-ce9038c6="">
+            <div className="card-title" data-v-ce9038c6="">
+              Add Family Member
+            </div>
+          </div>
+          <div className="card-body" data-v-ce9038c6="">
+            <div className="card-body">
+              <div className="form-elements">
+                <div className="form-element">
+                  <TextField
+                    id="form-element"
+                    label="Role"
+                    value={values.role}
+                    onChange={(e) => setRole(e.target.value)}
+                    variant="outlined"
+                    size="small"
+                  />
+                </div>
+                <div className="form-element">
+                  <TextField
+                    id="form-element"
+                    label="Name"
+                    value={values.name}
+                    onChange={(e) => setName(e.target.value)}
+                    variant="outlined"
+                    size="small"
+                  />
+                </div>
+                <div className="form-element">
+                  <TextField
+                    id="form-element"
+                    value={values.spouse}
+                    onChange={(e) => setSpouse(e.target.value)}
+                    label="Spouse"
+                    variant="outlined"
+                    size="small"
+                  />
+                </div>
+                <div className="form-element">
+                  <TextField
+                    id="form-element"
+                    label="Birth"
+                    value={values.birthYear}
+                    onChange={(e) => setBirthYear(e.target.value)}
+                    variant="outlined"
+                    size="small"
+                  />
+                </div>
+                <div className="form-element">
+                  <TextField
+                    id="form-element"
+                    label="Location"
+                    value={values.location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    variant="outlined"
+                    size="small"
+                  />
+                </div>
+                <Button
+                  onClick={(e) => handleFormSearch(e)}
+                  type="submit"
+                  size="large"
+                  className="input-group-text"
+                >
+                  Add Family
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -18,8 +18,8 @@ const FamilyDetails = (props) => {
           <div className="card-body" data-v-ce9038c6="">
             <div className="card-body">
               <div className="info">
-                <label htmlFor="">Name</label>
-                <label htmlFor="">Spouse:</label>
+                <label htmlFor="">Name: {props.name}</label>
+                <label htmlFor="">Spouse: {props.spouse}</label>
                 <label htmlFor="">Birth:</label>
                 <label htmlFor="">Location:</label>
                 <label htmlFor="">Present Address:</label>

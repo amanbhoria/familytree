@@ -14,13 +14,19 @@ import FolderIcon from "@mui/icons-material/Folder";
 const Tree = () => {
   const [open, setOpen] = useState(true);
   const [property, setProperty] = useState(false);
+  const [name, setName] = useState("");
+  const [spouse, setSpouse] = useState("");
 
   const handleClick = () => {
     setOpen(!open);
   };
 
-  const changeState = () => {
+  const changeState = (e) => {
+    e.preventDefault();
+    const getName = e.target.innerText;
+    console.log(getName);
     setProperty(!property);
+    setName(getName);
   };
 
   return (
@@ -52,23 +58,31 @@ const Tree = () => {
               component="nav"
               aria-labelledby="nested-list-subheader"
             >
-              <ListItemButton onClick={changeState}>
+              <ListItemButton
+                value="Ganga Bishan"
+                onClick={(e) => changeState(e)}
+              >
                 <ListItemIcon>
                   <FolderIcon />
                 </ListItemIcon>
-                <ListItemText primary="Grand Father" />
+                <ListItemText>Ganga Bishan</ListItemText>
               </ListItemButton>
-              <ListItemButton>
+              <ListItemButton onClick={(e) => changeState(e)}>
                 <ListItemIcon>
                   <FolderIcon></FolderIcon>
                 </ListItemIcon>
-                <ListItemText primary="Uncle" />
+                <ListItemText>Uncle</ListItemText>
               </ListItemButton>
-              <ListItemButton onClick={handleClick}>
+              <ListItemButton
+                onClick={(e) => {
+                  handleClick();
+                  changeState(e);
+                }}
+              >
                 <ListItemIcon>
                   <FolderIcon />
                 </ListItemIcon>
-                <ListItemText primary="Father" />
+                <ListItemText>Father</ListItemText>
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={open} timeout="auto" unmountOnExit>
@@ -99,7 +113,11 @@ const Tree = () => {
           </Button>
         </div>
       </div>
-      <FamilyDetails isVisible={property}></FamilyDetails>
+      <FamilyDetails
+        isVisible={property}
+        name={name}
+        spouse={spouse}
+      ></FamilyDetails>
     </div>
   );
 };

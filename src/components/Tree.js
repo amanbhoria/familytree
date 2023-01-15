@@ -28,7 +28,7 @@ const Tree = () => {
     {
       role: "Father",
       name: "Manoj Kumar",
-      spouse: "Savita",
+      spouse: "Vidya Swaroop",
       location: "Delhi",
       birthYear: "1971",
     },

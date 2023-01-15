@@ -18,10 +18,18 @@ const FamilyDetails = (props) => {
           <div className="card-body" data-v-ce9038c6="">
             <div className="card-body">
               <div className="info">
-                <label htmlFor="">Name: {props.obj.name}</label>
-                <label htmlFor="">Spouse: {props.obj.spouse}</label>
-                <label htmlFor="">Birth: {props.obj.birthYear}</label>
-                <label htmlFor="">Location: {props.obj.location}</label>
+                <div className="m-b-5" htmlFor="">
+                  <p>Name: {props.obj.name}</p>
+                </div>
+                <div className="small-text" htmlFor="">
+                  <p>Spouse/Husband: {props.obj.spouse}</p>
+                </div>
+                <div className="small-text" htmlFor="">
+                  <p>Birth: {props.obj.birthYear}</p>
+                </div>
+                <div className="small-text" htmlFor="">
+                  <p>Location: {props.obj.location}</p>
+                </div>
               </div>
 
               <Stack direction="row" alignItems="center" spacing={2}>

@@ -25,11 +25,12 @@ const FamilyDetails = (props) => {
               </div>
 
               <Stack direction="row" alignItems="center" spacing={2}>
-                <Button variant="contained" component="label">
+                <Button variant="contained" component="label" disabled>
                   Upload
                   <input hidden accept="image/*" multiple type="file" />
                 </Button>
                 <IconButton
+                  disabled
                   color="primary"
                   aria-label="upload picture"
                   component="label"

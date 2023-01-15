@@ -24,3 +24,23 @@ code {
 .functionalButton {
   padding: 10px;
 }
+
+.form-elements {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+}
+
+.form-element {
+    padding-bottom: 12px;
+  }
+
+/* @media screen and (max-width: 437px) {
+  body {
+    padding: 50px;
+  }
+
+  .col-4 {
+    @extend .col-12;
+  }
+} */

@@ -10,6 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import FolderIcon from "@mui/icons-material/Folder";
+import Form from "./Form";
 
 const Tree = () => {
   const [open, setOpen] = useState(true);
@@ -37,6 +38,13 @@ const Tree = () => {
       name: "Ishika Raj",
       spouse: "Unmarried",
       location: "Delhi",
+      birthYear: "2000",
+    },
+    {
+      role: "Best Friend",
+      name: "Aman Bhoria",
+      spouse: "Unmarried",
+      location: "Delhi",
       birthYear: "1998",
     },
   ]);
@@ -49,6 +57,8 @@ const Tree = () => {
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
   };
+
+  const addFamily = () => {};
 
   const handleSearchClick = () => {
     if (searchValue.length === 0) {
@@ -71,7 +81,7 @@ const Tree = () => {
   };
 
   return (
-    <div className="row">
+    <div className="row customrow1">
       <div className="col-4">
         <div className="card card-default" data-v-ce9038c6="">
           <div className="card-header" data-v-ce9038c6="">
@@ -154,13 +164,28 @@ const Tree = () => {
           </div>
         </div>
         <div className="functionalButton">
-          <Button type="submit" size="large" className="input-group-text">
+          <Button
+            disabled
+            type="submit"
+            size="large"
+            className="input-group-text"
+          >
             Import Json
           </Button>
-          <Button type="submit" size="large" className="input-group-text">
+          <Button
+            type="submit"
+            onClick={addFamily}
+            size="large"
+            className="input-group-text"
+          >
             Add Family
           </Button>
-          <Button type="submit" size="large" className="input-group-text">
+          <Button
+            disabled
+            type="submit"
+            size="large"
+            className="input-group-text"
+          >
             Export JSON
           </Button>
           <Button type="submit" size="large" className="input-group-text">
@@ -169,6 +194,7 @@ const Tree = () => {
         </div>
       </div>
       <FamilyDetails isVisible={property} obj={familyObj}></FamilyDetails>
+      <Form isVisible={property} obj={familyObj} className="pull-right"></Form>
     </div>
   );
 };

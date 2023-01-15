@@ -18,12 +18,12 @@ const FamilyDetails = (props) => {
           <div className="card-body" data-v-ce9038c6="">
             <div className="card-body">
               <div className="info">
-                <label htmlFor="">Name: {props.name}</label>
-                <label htmlFor="">Spouse: {props.spouse}</label>
-                <label htmlFor="">Birth:</label>
-                <label htmlFor="">Location:</label>
-                <label htmlFor="">Present Address:</label>
+                <label htmlFor="">Name: {props.obj.name}</label>
+                <label htmlFor="">Spouse: {props.obj.spouse}</label>
+                <label htmlFor="">Birth: {props.obj.birthYear}</label>
+                <label htmlFor="">Location: {props.obj.location}</label>
               </div>
+
               <Stack direction="row" alignItems="center" spacing={2}>
                 <Button variant="contained" component="label">
                   Upload
@@ -44,8 +44,6 @@ const FamilyDetails = (props) => {
       </div>
     );
   }
-
-  return <>Ishika is mad</>;
 };
 
 export default FamilyDetails;

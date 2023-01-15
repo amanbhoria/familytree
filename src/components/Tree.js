@@ -14,11 +14,76 @@ import FolderIcon from "@mui/icons-material/Folder";
 const Tree = () => {
   const [open, setOpen] = useState(true);
   const [property, setProperty] = useState(false);
-  const [name, setName] = useState("");
-  const [spouse, setSpouse] = useState("");
 
-  const handleClick = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const [familyObj, setFamilyObj] = useState([]);
+  const [familyArr, setFamilyArr] = useState([
+    {
+      role: "Grand Father",
+      name: "Ganga Bishan",
+      spouse: "Roshni",
+      location: "HR",
+      birthYear: "1950",
+    },
+    {
+      role: "Father",
+      name: "Ravinder",
+      spouse: "Savita",
+      location: "Delhi",
+      birthYear: "1971",
+    },
+    {
+      role: "Me",
+      name: "Aman",
+      spouse: "Ishika",
+      location: "Delhi",
+      birthYear: "1998",
+    },
+  ]);
+
+  const handleClick = (obj) => {
+    setFamilyObj(obj);
     setOpen(!open);
+  };
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    if (searchValue.length === 0) {
+      console.log(`Search Value if length is 0 ${searchValue}`);
+      setFamilyArr(
+        {
+          role: "Grand Father",
+          name: "Ganga Bishan",
+          spouse: "Roshni",
+          location: "HR",
+          birthYear: "1950",
+        },
+        {
+          role: "Father",
+          name: "Ravinder",
+          spouse: "Savita",
+          location: "Delhi",
+          birthYear: "1950",
+        },
+        {
+          role: "Me",
+          name: "Aman",
+          spouse: "Ishika",
+          location: "Delhi",
+          birthYear: "1998",
+        }
+      );
+    } else {
+      console.log(searchValue);
+      const element = familyArr.filter((x) => x.name === searchValue);
+      if (element && searchValue.length > 0) {
+        console.log(element);
+        setFamilyArr(element);
+      }
+    }
   };
 
   const changeState = (e) => {
@@ -26,77 +91,77 @@ const Tree = () => {
     const getName = e.target.innerText;
     console.log(getName);
     setProperty(!property);
-    setName(getName);
-    setSpouse("Wife");
   };
 
   return (
     <div className="row">
       <div className="col-4">
-        <div class="card card-default" data-v-ce9038c6="">
-          <div class="card-header" data-v-ce9038c6="">
-            <div class="card-title" data-v-ce9038c6="">
+        <div className="card card-default" data-v-ce9038c6="">
+          <div className="card-header" data-v-ce9038c6="">
+            <div className="card-title" data-v-ce9038c6="">
               Family Tree
             </div>
           </div>
           <div className="card-body" data-v-ce9038c6="">
             <div className="input-group mb-3">
               <TextField
-                id="standard-basic"
+                label="Search Member"
+                id="standard-basic searchedText"
                 type="text"
+                onChange={(e) => handleSearch(e)}
                 size="small"
                 className="form-control"
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
               />
-              <Button type="submit" className="input-group-text">
+              <Button
+                onClick={(e) => handleSearchClick(e)}
+                type="submit"
+                className="input-group-text"
+              >
                 <i class="fa-solid fa-magnifying-glass"></i>
               </Button>
             </div>
-
-            <List
-              sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-              component="nav"
-              aria-labelledby="nested-list-subheader"
-            >
-              <ListItemButton
-                value="Ganga Bishan"
-                onClick={(e) => changeState(e)}
-              >
-                <ListItemIcon>
-                  <FolderIcon />
-                </ListItemIcon>
-                <ListItemText>Ganga Bishan</ListItemText>
-              </ListItemButton>
-              <ListItemButton onClick={(e) => changeState(e)}>
-                <ListItemIcon>
-                  <FolderIcon></FolderIcon>
-                </ListItemIcon>
-                <ListItemText>Uncle</ListItemText>
-              </ListItemButton>
-              <ListItemButton
-                onClick={(e) => {
-                  handleClick();
-                  changeState(e);
-                }}
-              >
-                <ListItemIcon>
-                  <FolderIcon />
-                </ListItemIcon>
-                <ListItemText>Father</ListItemText>
-                {open ? <ExpandLess /> : <ExpandMore />}
-              </ListItemButton>
-              <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
+            {familyArr.map((obj, index) => {
+              const role = obj.role;
+              return (
+                <List
+                  sx={{
+                    width: "100%",
+                    maxWidth: 360,
+                    bgcolor: "background.paper",
+                  }}
+                  component="nav"
+                  aria-labelledby="nested-list-subheader"
+                  id="list"
+                >
+                  <ListItemButton
+                    key={index}
+                    onClick={(e) => {
+                      handleClick(obj);
+                      changeState(e);
+                    }}
+                  >
                     <ListItemIcon>
                       <FolderIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Me" />
+                    <ListItemText>{role}</ListItemText>
+                    {open ? <ExpandLess /> : <ExpandMore />}
                   </ListItemButton>
+
+                  {/* <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                      <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemIcon>
+                          <FolderIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Me" />
+                      </ListItemButton>
+                    </List>
+                  </Collapse> */}
                 </List>
-              </Collapse>
-            </List>
+              );
+            })}
           </div>
         </div>
         <div className="functionalButton">
@@ -114,11 +179,7 @@ const Tree = () => {
           </Button>
         </div>
       </div>
-      <FamilyDetails
-        isVisible={property}
-        name={name}
-        spouse={spouse}
-      ></FamilyDetails>
+      <FamilyDetails isVisible={property} obj={familyObj}></FamilyDetails>
     </div>
   );
 };

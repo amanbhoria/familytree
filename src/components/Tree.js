@@ -184,8 +184,8 @@ const Tree = () => {
             Import Json
           </Button>
           <Button
+            onClick={(e) => handleFormSearch(e)}
             type="submit"
-            onClick={addFamily}
             size="large"
             className="input-group-text"
           >
@@ -266,14 +266,6 @@ const Tree = () => {
                     size="small"
                   />
                 </div>
-                <Button
-                  onClick={(e) => handleFormSearch(e)}
-                  type="submit"
-                  size="large"
-                  className="input-group-text"
-                >
-                  Add Family
-                </Button>
               </div>
             </div>
           </div>

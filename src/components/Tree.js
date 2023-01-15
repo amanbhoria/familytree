@@ -79,6 +79,10 @@ const Tree = () => {
   };
 
   const handleFormSearch = (e) => {
+    if (!(name && spouse && location && birthYear)) {
+      alert("Please add valid input");
+      return;
+    }
     e.preventDefault();
     const newElement = {
       role: role,

@@ -27,15 +27,15 @@ const Tree = () => {
     },
     {
       role: "Father",
-      name: "Ravinder",
+      name: "Manoj Kumar",
       spouse: "Savita",
       location: "Delhi",
       birthYear: "1971",
     },
     {
       role: "Me",
-      name: "Aman",
-      spouse: "Ishika",
+      name: "Ishika Raj",
+      spouse: "Unmarried",
       location: "Delhi",
       birthYear: "1998",
     },
